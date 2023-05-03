@@ -1,5 +1,5 @@
 shared_js:
-  filters: rjsmin
+  #filters: rjsmin
   output: ckanext-agsview/%(version)s_shared.js
   extra:
     preload:
@@ -18,7 +18,7 @@ shared_css:
     - css/vendor/leaflet.css
 
 ags_fs_view_js:
-  filters: rjsmin
+  #filters: rjsmin
   output: ckanext-agsview/%(version)s_ags_fs_view.js
   extra:
     preload:
@@ -27,7 +27,7 @@ ags_fs_view_js:
     - js/ags_fs_view.js
 
 ags_ms_view_js:
-  filters: rjsmin
+  #filters: rjsmin
   output: ckanext-agsview/%(version)s_ags_ms_view.js
   extra:
     preload:

@@ -33,7 +33,7 @@ class AGSFSView(p.SingletonPlugin):
     def update_config(self, config):
         p.toolkit.add_public_directory(config, 'public')
         p.toolkit.add_template_directory(config, 'templates')
-        p.toolkit.add_resource('public', 'ckanext-agsview')
+        p.toolkit.add_resource('assets', 'ckanext-agsview')
 
     # IResourceView
 
@@ -77,7 +77,7 @@ class AGSMSView(p.SingletonPlugin):
     p.implements(p.IConfigurer, inherit=True)
     p.implements(p.IResourceView, inherit=True)
     p.implements(p.ITemplateHelpers, inherit=True)
-
+    
     def update_config(self, config):
         p.toolkit.add_public_directory(config, 'public')
         p.toolkit.add_template_directory(config, 'templates')
