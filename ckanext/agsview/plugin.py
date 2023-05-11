@@ -1,8 +1,9 @@
 # encoding: utf-8
 import six
-import json
 import logging
+
 import ckan.plugins as p
+
 from ckan.common import config
 from packaging.version import Version
 
@@ -11,7 +12,7 @@ log = logging.getLogger(__name__)
 
 ignore_empty = p.toolkit.get_validator('ignore_empty')
 
-DEFAULT_AGS_FORMATS = ['ags', 'esri rest', 'arcgis geoservices rest api']
+DEFAULT_AGS_FORMATS = ['ags', 'esri', 'arcgis']
 
 
 def ags_view_default_basemap_url():
@@ -40,8 +41,10 @@ class AGSFSView(p.SingletonPlugin):
     def can_view(self, data_dict):
         if 'url' not in data_dict['resource']:
             return False
-        format_lower = data_dict['resource'].get('format', '').lower()
-        return format_lower in DEFAULT_AGS_FORMATS
+
+        url = data_dict['resource'].get('url')
+        ags_format = any(part in url for part in DEFAULT_AGS_FORMATS)
+        return ags_format
 
     def view_template(self, context, data_dict):
         return 'agsview/ags_fs_view.html'
@@ -100,8 +103,10 @@ class AGSMSView(p.SingletonPlugin):
     def can_view(self, data_dict):
         if 'url' not in data_dict['resource']:
             return False
-        format_lower = data_dict['resource'].get('format', '').lower()
-        return format_lower in DEFAULT_AGS_FORMATS
+
+        url = data_dict['resource'].get('url')
+        ags_format = any(part in url for part in DEFAULT_AGS_FORMATS)
+        return ags_format
 
     def view_template(self, context, data_dict):
         return 'agsview/ags_ms_view.html'
