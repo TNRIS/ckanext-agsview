@@ -1,3 +1,2 @@
-include README.rst
-include LICENSE
-recursive-include ckanext/agsview *.html *.json *.js *.less *.css *.config *.png *.gif *.jpg
+recursive-include ckanext/agsview *.html *.json *.yaml *.js *.less *.css *.config *.png *.gif *.jpg *.yml
+include README.rst LICENSE *.ini
