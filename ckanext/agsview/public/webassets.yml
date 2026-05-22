@@ -12,6 +12,7 @@ shared_js:
     - js/vendor/proj4-src.js
 
 shared_css:
+  filters: cssmin
   output: ckanext-agsview/%(version)s_shared.css
   contents:
     - css/ags_view.css
