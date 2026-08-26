@@ -24,6 +24,22 @@ var date_fields = [];
    *
    * Returns a Leaflet map object.
    */
+
+  // Override the default marker icon configuration globally
+  delete L.Icon.Default.prototype._getIconUrl;
+
+  L.Icon.Default.mergeOptions({
+    iconUrl: '/base/images/twdh-marker-teal.svg',
+    iconRetinaUrl: '/base/images/twdh-marker-teal.svg',
+    shadowUrl: '/img/leaflet/marker-shadow.png',
+    iconSize: [25, 41],         // size of the icon [width, height]
+    iconAnchor: [12, 41],       // point of the icon which will correspond to marker's location
+    popupAnchor: [1, -34],      // point from which the popup should open relative to the iconAnchor
+    shadowSize: [41, 41]        // size of the shadow
+  });
+
+
+
    var basemaps = [
      'Streets','Topographic','Oceans','OceansLabels','NationalGeographic','Gray','GrayLabels','DarkGray','DarkGrayLabels','Imagery','ImageryLabels','ImageryTransportation','ShadedRelief','ShadedReliefLabels','Terrain','TerrainLabels','USATopo',
    ];
@@ -56,12 +72,13 @@ var date_fields = [];
             baseLayerUrl = mapConfig.url;
         } else {
             // Default to Stamen base map
-            baseLayerUrl = 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png';
+            baseLayerUrl = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
             leafletBaseLayerOptions.subdomains = mapConfig.subdomains || 'abcd';
-            leafletBaseLayerOptions.attribution = mapConfig.attribution || 'Map tiles by <a href="http://stamen.com">Stamen Design</a> (<a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>). Data by <a href="http://openstreetmap.org">OpenStreetMap</a> (<a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>)';
+            leafletBaseLayerOptions.attribution = mapConfig.attribution || '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a>';
         }
 
         var baseLayer = new L.TileLayer(baseLayerUrl, leafletBaseLayerOptions);
+        console.log( baseLayer );
         map.addLayer(baseLayer);
   }
       return map;
