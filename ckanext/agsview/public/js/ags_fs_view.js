@@ -29,7 +29,7 @@ ckan.module('ags_fs_view', function (jQuery, _) {
     },
     loadJson: function (path) {
       var self = this;
-      this.layer =  L.esri.featureLayer({
+      this.layer = L.esri.Cluster.featureLayer({
           url: path,
           onEachFeature: function (feature, layer) {
             layer.bindPopup(ckan.singleFeature(feature), {
@@ -37,6 +37,7 @@ ckan.module('ags_fs_view', function (jQuery, _) {
             });
           }
       })
+
       this.layer.addTo(map);
       this.getMetaData();
     },
@@ -128,7 +129,13 @@ ckan.module('ags_fs_view', function (jQuery, _) {
             layer.bindPopup(popupContent);
           }
         }
-      }).addTo(self.map);
+      });
+      // .addTo(self.map);
+
+      var markers = L.markerClusterGroup();
+      markers.addLayer(gjLayer);
+      self.map.addLayer(markers);
+
       self.map.fitBounds(gjLayer.getBounds());
     }
   };
