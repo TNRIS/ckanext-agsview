@@ -10,6 +10,8 @@ shared_js:
     - js/vendor/esri-leaflet-debug.js
     - js/ags_common.js
     - js/vendor/proj4-src.js
+    - js/vendor/leaflet-markercluster/leaflet.markercluster.js
+    - js/vendor/leaflet-markercluster/esri-leaflet-cluster.js
 
 shared_css:
   filters: cssmin
@@ -17,6 +19,9 @@ shared_css:
   contents:
     - css/ags_view.css
     - css/vendor/leaflet.css
+    - js/vendor/leaflet-markercluster/MarkerCluster.css
+    - js/vendor/leaflet-markercluster/MarkerCluster.Default.css
+
 
 ags_fs_view_js:
   filters: rjsmin
