@@ -25,6 +25,7 @@ var date_fields = [];
    * Returns a Leaflet map object.
    */
 
+  /*
   // Override the default marker icon configuration globally
   delete L.Icon.Default.prototype._getIconUrl;
 
@@ -37,6 +38,7 @@ var date_fields = [];
     popupAnchor: [1, -34],      // point from which the popup should open relative to the iconAnchor
     shadowSize: [41, 41]        // size of the shadow
   });
+  */
 
 
 
